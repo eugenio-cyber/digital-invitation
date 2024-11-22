@@ -1,5 +1,8 @@
 {
   "code-runner.executorMap": {
     "typescript": "npx tsx"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
   }
 }
