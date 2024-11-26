@@ -1,5 +1,5 @@
 "use client";
-import { Event, Guest, events } from "@/core";
+import { Event, Guest, events } from "core";
 import { use, useState, useEffect } from "react";
 import EventDashboard from "@/components/event/EventDashboard";
 import EventFormPassword from "@/components/event/EventFormPassword";

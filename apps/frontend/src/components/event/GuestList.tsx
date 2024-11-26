@@ -1,4 +1,4 @@
-import { Guest } from "@/core";
+import { Guest } from "core";
 import ConvidadoItem from "./GuestItem";
 
 export interface ListaConvidadosProps {

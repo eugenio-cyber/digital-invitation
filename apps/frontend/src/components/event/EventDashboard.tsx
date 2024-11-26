@@ -1,4 +1,4 @@
-import { Event, Guest } from "@/core";
+import { Event, Guest } from "core";
 import EventInformation from "@/components/event/EventInformation";
 import QrCodeAccess from "@/components/event/QrCodeAccess";
 import Statistic from "@/components/shared/Statistic";
