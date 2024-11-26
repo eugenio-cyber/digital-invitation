@@ -21,7 +21,7 @@ export class EventsController {
   constructor(readonly repo: EventPrisma) {}
 
   @Post()
-  async saveEvent(@Body() event: Event) {
+  async createEvent(@Body() event: Event) {
     const savedEvent = await this.repo.searchForAlias(event.alias);
 
     if (savedEvent && savedEvent.id !== event.id) {
@@ -29,7 +29,7 @@ export class EventsController {
     }
 
     const fullEvent = complementEvent(this.deserialize(event));
-    await this.repo.save(fullEvent);
+    await this.repo.createEvent(fullEvent);
   }
 
   @Post(':alias/convidado')
@@ -65,14 +65,18 @@ export class EventsController {
     return events.map(this.serialize);
   }
 
-  @Get(':idOrAlias')
-  async searchEvent(@Param('idOrAlias') idOrAlias: string) {
+  @Get(':verificationCode')
+  async searchEvent(@Param('verificationCode') verificationCode: string) {
     let event: Event;
 
-    if (Id.isValid(idOrAlias)) {
-      event = await this.repo.searchForId(idOrAlias, true);
+    if (Id.isValid(verificationCode)) {
+      event = await this.repo.searchForId(verificationCode, true);
     } else {
-      event = await this.repo.searchForAlias(idOrAlias, true);
+      event = await this.repo.searchForAlias(verificationCode, true);
+    }
+
+    if (!event) {
+      throw new HttpException('Id ou senha não correspondem ao evento.', 400);
     }
 
     return this.serialize(event);
@@ -89,15 +93,16 @@ export class EventsController {
 
     return {
       ...event,
-      data: DateParser.format(event.date),
+      date: DateParser.format(event.date),
     };
   }
 
   private deserialize(event: any): Event {
     if (!event) return null;
+
     return {
       ...event,
       date: DateParser.unformat(event.date),
-    } as Event;
+    };
   }
 }

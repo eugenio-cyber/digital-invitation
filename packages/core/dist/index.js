@@ -281,7 +281,7 @@ function complementGuest(guest) {
   if (errors.length > 0) {
     throw new Error(errors.join("\n"));
   }
-  const qtdCompanions = guest.qtdCompanions ?? 0;
+  const qtdCompanions = !guest.hasCompanions ? 0 : guest.qtdCompanions ?? 0;
   const hasCompanions = guest.hasCompanions && guest.confirmed && qtdCompanions > 0;
   const guestUpdated = {
     ...guest,
