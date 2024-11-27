@@ -4,6 +4,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   label?: string;
   value: string | number;
   onChange: (event: any) => void;
+  placeholder?: string;
   description?: string;
   warning?: string;
   error?: string;
@@ -16,6 +17,7 @@ export default function Input(props: InputProps) {
     delete propsInput.label;
     delete propsInput.description;
     delete propsInput.warning;
+    delete propsInput.placeholder;
     delete propsInput.error;
     delete propsInput.outterClassName;
     return propsInput;
@@ -36,6 +38,7 @@ export default function Input(props: InputProps) {
       <input
         {...propsInput()}
         type={props.type ?? "text"}
+        placeholder={props.placeholder ?? ""}
         className='w-full px-3 py-2 border border-white/20 focus:border-white/50 rounded-md bg-black/50'
       />
       {props.error && (

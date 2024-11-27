@@ -369,7 +369,6 @@ var DateParser = class {
     return `${year}-${month}-${day}T${hour}:${minute}`;
   }
   static unformat(date) {
-    console.log("date: " + date);
     const [year, month, day] = date.split("T")[0].split("-");
     const [hour, minute] = date.split("T")[1].split(":");
     return new Date(

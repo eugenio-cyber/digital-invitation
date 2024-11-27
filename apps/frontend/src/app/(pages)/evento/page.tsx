@@ -3,8 +3,9 @@ import EventForm from "@/components/event/EventForm";
 import Window from "@/components/shared/Window";
 import useEvent from "@/data/hooks/useEvent";
 
-export default function Event() {
+export default function EventPage() {
   const { event } = useEvent();
+
   return (
     <div className=''>
       <Window

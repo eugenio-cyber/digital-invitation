@@ -5,11 +5,10 @@ import {
   Event,
   Guest,
   DateParser,
-} from "@/core";
+} from "core";
 import { createContext, useCallback, useEffect, useState } from "react";
 import useAPI from "../hooks/useApi";
-import { useRouter } from "next/router";
-// import useMensagens from "../hooks/useMensagens";
+import { useRouter } from "next/navigation";
 
 export interface EventContextProps {
   event: Partial<Event>;
@@ -27,27 +26,22 @@ const EventContext = createContext<EventContextProps>({} as any);
 
 export function EventProvider(props: any) {
   const { httpGet, httpPost } = useAPI();
-  // const { adicionarErro } = useMensagens();
   const router = useRouter();
 
   const [validAlias, setValidAlias] = useState(true);
   const [event, setEvent] = useState<Partial<Event>>(createEmptyEvent());
   const [guest, setGuest] = useState<Partial<Guest>>(createEmptyGuest());
 
-  console.log(event);
-
   const createEvent = useCallback(
     async function () {
       try {
-        const eventoCriado = await httpPost("/eventos", event);
-        router.push("/event/sucesso");
+        const createdEvent = await httpPost("/eventos", event);
+        router.push("/evento/sucesso");
         setEvent({
-          ...eventoCriado,
-          date: DateParser.unformat(eventoCriado.data),
+          ...createdEvent,
+          date: DateParser.unformat(createdEvent.date),
         });
-      } catch (error: any) {
-        // adicionarErro(error.messagem ?? "Ocorreu um erro inesperado!");
-      }
+      } catch (error: any) {}
     },
     [event, httpPost, router]
   );
@@ -59,11 +53,9 @@ export function EventProvider(props: any) {
         if (!event) return;
         setEvent({
           ...event,
-          date: DateParser.unformat(event.data),
+          date: DateParser.unformat(event.date),
         });
-      } catch (error: any) {
-        // adicionarErro(error.messagem ?? "Ocorreu um erro inesperado!");
-      }
+      } catch (error: any) {}
     },
     [httpGet, setEvent]
   );
@@ -73,9 +65,7 @@ export function EventProvider(props: any) {
       try {
         await httpPost(`/eventos/${event.alias}/convidado`, guest);
         router.push("/convite/obrigado");
-      } catch (error: any) {
-        // adicionarErro(error.messagem ?? "Ocorreu um erro inesperado!");
-      }
+      } catch (error: any) {}
     },
     [httpPost, event, guest, router]
   );
@@ -87,9 +77,7 @@ export function EventProvider(props: any) {
           `/eventos/validar/${event.alias}/${event.id}`
         );
         setValidAlias(valid);
-      } catch (error: any) {
-        // adicionarErro(error.messagem ?? "Ocorreu um erro inesperado!");
-      }
+      } catch (error: any) {}
     },
     [httpGet, event]
   );
