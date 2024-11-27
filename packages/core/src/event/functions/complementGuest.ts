@@ -8,7 +8,7 @@ export default function complementGuest(guest: Partial<Guest>): Guest {
     throw new Error(errors.join("\n"));
   }
 
-  const qtdCompanions = guest.qtdCompanions ?? 0;
+  const qtdCompanions = !guest.hasCompanions ? 0 : (guest.qtdCompanions ?? 0);
   const hasCompanions =
     guest.hasCompanions && guest.confirmed && qtdCompanions > 0;
 

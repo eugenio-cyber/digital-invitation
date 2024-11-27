@@ -13,7 +13,7 @@ export default function complementEvent(partialEvent: Partial<Event>): Event {
     ...partialEvent,
     id: partialEvent.id || Id.new(),
     password: partialEvent.password || Password.new(10),
-    expectedAudience: partialEvent.expectedAudience || 1,
+    expectedAudience: +(partialEvent.expectedAudience || 1),
   } as Event;
 
   return event;
