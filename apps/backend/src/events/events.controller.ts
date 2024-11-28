@@ -30,6 +30,7 @@ export class EventsController {
 
     const fullEvent = complementEvent(this.deserialize(event));
     await this.repo.createEvent(fullEvent);
+    return this.serialize(fullEvent);
   }
 
   @Post(':alias/convidado')

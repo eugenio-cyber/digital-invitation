@@ -8,7 +8,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   description?: string;
   warning?: string;
   error?: string;
-  outterClassName?: string;
+  otherClassName?: string;
 }
 
 export default function Input(props: InputProps) {
@@ -19,12 +19,12 @@ export default function Input(props: InputProps) {
     delete propsInput.warning;
     delete propsInput.placeholder;
     delete propsInput.error;
-    delete propsInput.outterClassName;
+    delete propsInput.otherClassName;
     return propsInput;
   }
 
   return (
-    <div className={`flex flex-col gap-2 ${props.outterClassName ?? ""}`}>
+    <div className={`flex flex-col gap-2 ${props.otherClassName ?? ""}`}>
       <div className='flex flex-col'>
         {props.label && (
           <label className='text-lg font-black text-white'>{props.label}</label>
