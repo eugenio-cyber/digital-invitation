@@ -69,7 +69,7 @@ export function EventProvider(props: any) {
     async function () {
       try {
         await httpPost(`/eventos/${event.alias}/convidado`, guest);
-        router.push("/obrigado");
+        router.push("/convite/obrigado");
       } catch (error: any) {
         console.error(error);
       }
