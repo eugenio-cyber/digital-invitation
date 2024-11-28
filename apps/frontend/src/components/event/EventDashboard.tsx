@@ -9,6 +9,7 @@ export interface EventDashboard {
   presents: Guest[];
   absent: Guest[];
   total: number;
+  updateGuestList: () => void;
 }
 
 export default function EventDashboard(props: EventDashboard) {
@@ -36,7 +37,10 @@ export default function EventDashboard(props: EventDashboard) {
         />
       </div>
 
-      <button className='button blue self-end mt-12'>
+      <button
+        className='button blue self-end mt-12'
+        onClick={props.updateGuestList}
+      >
         <span>Atualizar Lista de Convidados</span>
       </button>
 

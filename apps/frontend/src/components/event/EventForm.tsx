@@ -55,6 +55,7 @@ export default function EventForm() {
         <Input
           label='Data'
           description='Data e hora em que o evento ocorrerá'
+          type='datetime-local'
           value={DateParser.format(event.date ?? new Date())}
           onChange={(e) =>
             changeEvent({
@@ -62,7 +63,6 @@ export default function EventForm() {
               date: DateParser.unformat(e.target.value),
             })
           }
-          type='datetime-local'
         ></Input>
         <Input
           label='Local'
@@ -113,6 +113,8 @@ export default function EventForm() {
         <Input
           label='Público Esperado'
           description='Total de convidados e acompanhantes esperados'
+          type='number'
+          min={1}
           value={event.expectedAudience ?? 1}
           onChange={(e) =>
             changeEvent({
@@ -120,8 +122,6 @@ export default function EventForm() {
               expectedAudience: Number(e.target.value),
             })
           }
-          type='number'
-          min={1}
         ></Input>
       </div>
     </Steps>

@@ -41,7 +41,9 @@ export function EventProvider(props: any) {
           ...createdEvent,
           date: DateParser.unformat(createdEvent.date),
         });
-      } catch (error: any) {}
+      } catch (error: any) {
+        console.error(error);
+      }
     },
     [event, httpPost, router]
   );
@@ -51,11 +53,14 @@ export function EventProvider(props: any) {
       try {
         const event = await httpGet(`/eventos/${verificationCode}`);
         if (!event) return;
+
         setEvent({
           ...event,
           date: DateParser.unformat(event.date),
         });
-      } catch (error: any) {}
+      } catch (error: any) {
+        console.error(error);
+      }
     },
     [httpGet, setEvent]
   );
@@ -64,8 +69,10 @@ export function EventProvider(props: any) {
     async function () {
       try {
         await httpPost(`/eventos/${event.alias}/convidado`, guest);
-        router.push("/convite/obrigado");
-      } catch (error: any) {}
+        router.push("/obrigado");
+      } catch (error: any) {
+        console.error(error);
+      }
     },
     [httpPost, event, guest, router]
   );
@@ -77,7 +84,9 @@ export function EventProvider(props: any) {
           `/eventos/validar/${event.alias}/${event.id}`
         );
         setValidAlias(valid);
-      } catch (error: any) {}
+      } catch (error: any) {
+        console.error(error);
+      }
     },
     [httpGet, event]
   );

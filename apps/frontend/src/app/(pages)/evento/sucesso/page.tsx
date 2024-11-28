@@ -7,12 +7,18 @@ import useEvent from "@/data/hooks/useEvent";
 import { Event } from "core";
 import QrCodeAccess from "@/components/event/QrCodeAccess";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function SuccessPage() {
   const { event } = useEvent();
   const [currentUrl, setCurrentUrl] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
+    if (Object.values(event).some((v) => v === "")) {
+      router.push("/");
+    }
+
     setCurrentUrl(window.location.origin);
   }, []);
 

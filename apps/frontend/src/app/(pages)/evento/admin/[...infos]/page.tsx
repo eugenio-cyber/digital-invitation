@@ -27,6 +27,7 @@ export default function AdminEventPage(props: any) {
 
   const getEvent = useCallback(async () => {
     if (!id || !password) return;
+
     const event = await httpPost("/eventos/acessar", { id, password });
     setEvent(event);
   }, [httpPost, id, password]);
@@ -43,6 +44,7 @@ export default function AdminEventPage(props: any) {
           presents={presents}
           absent={absent}
           total={total}
+          updateGuestList={getEvent}
         />
       ) : (
         <EventFormPassword
