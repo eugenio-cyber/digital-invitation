@@ -11,7 +11,7 @@ export default function Home() {
           complicações!
         </p>
       </div>
-      <Link href='/evento' className='button text-lg uppercase'>
+      <Link href='/evento' className='button blue text-lg uppercase'>
         Crie o seu evento
       </Link>
     </div>

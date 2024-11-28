@@ -30,6 +30,7 @@ export class EventsController {
 
     const fullEvent = complementEvent(this.deserialize(event));
     await this.repo.createEvent(fullEvent);
+    return this.serialize(fullEvent);
   }
 
   @Post(':alias/convidado')
@@ -46,7 +47,7 @@ export class EventsController {
 
   @Post('acessar')
   async accessEvent(@Body() data: { id: string; password: string }) {
-    const event = await this.repo.searchForId(data.id);
+    const event = await this.repo.searchForId(data.id, true);
 
     if (!event) {
       throw new HttpException('Evento não encontrado.', 400);
