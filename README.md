@@ -3,7 +3,7 @@
 </h3>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/status-em%20andamento-orange?style=for-the-badge"/>
+ <img src="https://img.shields.io/badge/status-concluído-green?style=for-the-badge"/>
 </p>
 
 <br>
@@ -34,8 +34,10 @@ Tem o objetivo de criar um sistema para gerenciamento de eventos e convites de e
 
 ## ⛏️ Recursos futuros:
 
-- [ ] Responsividade
 - [ ] Toast Notifications
+- [ ] Responsividade
+- [ ] Aplicação Mobile
+- [ ] Deploy
 
 ## 💬 Feedback
 
