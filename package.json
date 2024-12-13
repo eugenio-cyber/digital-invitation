@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "run-p packages:* apps:*",
     "apps:frontend": "cd apps/frontend && npm run dev",
-    "apps:backend": "cd apps/backend && npm run start:dev",
+    "apps:backend": "cd apps/backend && prisma generate && npm run start:dev",
     "packages:core": "cd packages/core && npm run dev"
   },
   "keywords": [],
