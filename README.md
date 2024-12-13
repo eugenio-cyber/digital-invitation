@@ -15,11 +15,7 @@ Tem o objetivo de criar um sistema para gerenciamento de eventos e convites de e
 ## 💻 Como usar?
 
 <p>
- Para usar você pode cadastrar um evento preenchendo as informações necessárias. Após isso, você terá a opção de copiar o link de convite para o evento, o link para a página de administrador e a senha do evento.
- 
- <br>
- 
- <b>OBS:</b> para que tudo funcione bem é necessário rodar o comando ```mpn install``` no diretótio principal e criar o arquivo .env tanto no diretório frontend quanto no backend;
+ Para usar você pode cadastrar um evento preenchendo as informações necessárias. Após isso, você terá a opção de copiar o link de convite para o evento, o link para a página de administrador e a senha do evento. <br> <br> <b>OBS:</b> para que tudo funcione bem é necessário rodar o comando `mpn install` no diretório principal e criar o arquivo .env tanto no diretório frontend quanto no backend;
 </p>
 
 ## 🛠️ Ferramentas utilizadas?
